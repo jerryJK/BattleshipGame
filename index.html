@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BattleshipGame</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="app-header d-flex justify-content-center align-items-center">
+        <h1 class="app-title text-center mt-1">Battleship Game</h1>
+    </header>
+
+    <section id="game-board">
+        <div class="timer-wrapper text-center py-3">Time: <span class="timer">0</span> s</div>
+        <div class="message-wrapper"></div>
+        <table class="game-table mx-auto">
+            <tr>
+                <th></td>
+                <th>A</td>
+                <th>B</td>
+                <th>C</td>
+                <th>D</td>
+                <th>E</td>
+                <th>F</td>
+                <th>G</td>
+                <th>H</td>
+                <th>I</td>
+                <th>J</td>
+            </tr>
+            <tr>
+                <th>0</th>
+                <td id="00" data-target="A0"></td>
+                <td id="01" data-target="A1"></td>
+                <td id="02" data-target="A2"></td>
+                <td id="03" data-target="A3"></td>
+                <td id="04" data-target="A4"></td>
+                <td id="05" data-target="A5"></td>
+                <td id="06" data-target="A6"></td>
+                <td id="07" data-target="A7"></td>
+                <td id="08" data-target="A8"></td>
+                <td id="09" data-target="A9"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td id="10" data-target="B0"></td>
+                <td id="11" data-target="B1"></td>
+                <td id="12" data-target="B2"></td>
+                <td id="13" data-target="B3"></td>
+                <td id="14" data-target="B4"></td>
+                <td id="15" data-target="B5"></td>
+                <td id="16" data-target="B6"></td>
+                <td id="17" data-target="B7"></td>
+                <td id="18" data-target="B8"></td>
+                <td id="19" data-target="B9"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td id="20" data-target="C0"></td>
+                <td id="21" data-target="C1"></td>
+                <td id="22" data-target="C2"></td>
+                <td id="23" data-target="C3"></td>
+                <td id="24" data-target="C4"></td>
+                <td id="25" data-target="C5"></td>
+                <td id="26" data-target="C6"></td>
+                <td id="27" data-target="C7"></td>
+                <td id="28" data-target="C8"></td>
+                <td id="29" data-target="C9"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td id="30" data-target="D0"></td>
+                <td id="31" data-target="D1"></td>
+                <td id="32" data-target="D2"></td>
+                <td id="33" data-target="D3"></td>
+                <td id="34" data-target="D4"></td>
+                <td id="35" data-target="D5"></td>
+                <td id="36" data-target="D5"></td>
+                <td id="37" data-target="D7"></td>
+                <td id="38" data-target="D8"></td>
+                <td id="39" data-target="D9"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td id="40" data-target="E0"></td>
+                <td id="41" data-target="E1"></td>
+                <td id="42" data-target="E2"></td>
+                <td id="43" data-target="E3"></td>
+                <td id="44" data-target="E4"></td>
+                <td id="45" data-target="E5"></td>
+                <td id="46" data-target="E5"></td>
+                <td id="47" data-target="E7"></td>
+                <td id="48" data-target="E8"></td>
+                <td id="49" data-target="E9"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td id="50" data-target="F0"></td>
+                <td id="51" data-target="F1"></td>
+                <td id="52" data-target="F2"></td>
+                <td id="53" data-target="F3"></td>
+                <td id="54" data-target="F4"></td>
+                <td id="55" data-target="F5"></td>
+                <td id="56" data-target="F5"></td>
+                <td id="57" data-target="F7"></td>
+                <td id="58" data-target="F8"></td>
+                <td id="59" data-target="F9"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td id="60" data-target="G0"></td>
+                <td id="61" data-target="G1"></td>
+                <td id="62" data-target="G2"></td>
+                <td id="63" data-target="G3"></td>
+                <td id="64" data-target="G4"></td>
+                <td id="65" data-target="G5"></td>
+                <td id="66" data-target="G5"></td>
+                <td id="67" data-target="G7"></td>
+                <td id="68" data-target="G8"></td>
+                <td id="69" data-target="G9"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td id="70" data-target="H0"></td>
+                <td id="71" data-target="H1"></td>
+                <td id="72" data-target="H2"></td>
+                <td id="73" data-target="H3"></td>
+                <td id="74" data-target="H4"></td>
+                <td id="75" data-target="H5"></td>
+                <td id="76" data-target="H5"></td>
+                <td id="77" data-target="H7"></td>
+                <td id="78" data-target="H8"></td>
+                <td id="79" data-target="H9"></td>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td id="80" data-target="I0"></td>
+                <td id="81" data-target="I1"></td>
+                <td id="82" data-target="I2"></td>
+                <td id="83" data-target="I3"></td>
+                <td id="84" data-target="I4"></td>
+                <td id="85" data-target="I5"></td>
+                <td id="86" data-target="I5"></td>
+                <td id="87" data-target="I7"></td>
+                <td id="88" data-target="I8"></td>
+                <td id="89" data-target="I9"></td>
+            </tr>
+            <tr>
+                <th>9</th>
+                <td id="90" data-target="J0"></td>
+                <td id="91" data-target="J1"></td>
+                <td id="92" data-target="J2"></td>
+                <td id="93" data-target="J3"></td>
+                <td id="94" data-target="J4"></td>
+                <td id="95" data-target="J5"></td>
+                <td id="96" data-target="J5"></td>
+                <td id="97" data-target="J7"></td>
+                <td id="98" data-target="J8"></td>
+                <td id="99" data-target="J9"></td>
+            </tr>
+        </table>
+        <button class="btn btn-success d-block mx-auto my-3">START GAME</button>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="js/out.js"></script>
+</body>
+
+</html>
