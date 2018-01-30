@@ -1,3 +1,5 @@
+import { view }  from "./view.js";
+
 
 class Game {
     constructor(selectorName) {
@@ -13,6 +15,7 @@ class Game {
         })
         this.$gameDOMElement.find(".btn-start").on('click', () => this.startTimer());
         this.$gameDOMElement.find(".timer").text(this.timer);
+
    }
 
    startTimer() {

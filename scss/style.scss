@@ -1,3 +1,4 @@
+
 // fonts
 $font-number: Arial;
 $font-text: Tahoma;
@@ -19,10 +20,6 @@ header {
   height: 130px;
 }
 
-.app {
-    text-align: center;
-}
-
 .app-header {
     background-color: #222;
     padding: 10px;
@@ -35,6 +32,9 @@ header {
     font-weight: bold;
 }
 
+.message-wrapper {
+  color: red;
+}
 
 //game-table
 table {
