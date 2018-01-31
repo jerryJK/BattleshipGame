@@ -2,15 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #e2e2e2; }
+  background: lightgrey; }
 
 header {
   background: url("/../images/submarine2.jpg") no-repeat center;
   background-size: cover;
   height: 130px; }
-
-.app {
-  text-align: center; }
 
 .app-header {
   background-color: #222;
@@ -21,6 +18,9 @@ header {
 .app-title {
   font-size: 3.5rem;
   font-weight: bold; }
+
+.message-wrapper {
+  color: red; }
 
 table td {
   width: 40px;
