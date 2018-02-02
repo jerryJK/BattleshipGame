@@ -1,10 +1,18 @@
+import Event from './EventDispatcher';
 
 export default class Model  {
-  constructor() {
-    
+  constructor(items) {
+      this._targets = [];
+      this.targetAdded = new Event(this);
   }
 
-  displayMessage() {
-      console.log('model run');
-	}
+  addTarget(target) {
+      this._targets= [...this._targets, target];
+      this.targetAdded.notify(target);
+  }
+
+  getTargets() {
+      return [...this._targets];
+  }
+
 }
