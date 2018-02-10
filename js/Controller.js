@@ -5,16 +5,25 @@ export default class Controller  {
 
     var _this = this;
 
-    this._view.cellClicked.attach(function (context,target) {
-        _this.addTarget(target);
+    this._view.cellClicked.attach(function(context,target) {
+        _this.showResult(target);
+    });
+
+    this._view.startButtonClicked.attach(function() {
+        _this.startGame();
     });
 
   }
 
-  addTarget(target) {
+  showResult(target) {
     console.log(target);
+    this._model.fireShip(target);
     this._model.addTarget(target);
     //this._view.displayHit(target);
+  }
+
+  startGame() {
+    this._model.startGame();
   }
 
 
