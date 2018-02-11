@@ -3,6 +3,8 @@ import Event from './EventDispatcher';
 export default class Model  {
   constructor(items) {
       this._gameStart = false;
+      this._timer = 0;
+      this._intervalId;
       this._targets = [];
       this._boardSize = 10;
     	this._numShips = 5;
@@ -21,6 +23,7 @@ export default class Model  {
       this.showHit = new Event(this);
       this.showMiss = new Event(this);
       this.gameStart = new Event(this);
+      this.handleTimer = new Event(this);
 
   }
 
@@ -68,16 +71,30 @@ export default class Model  {
   }
 
   startGame() {
+    this._timer = 0;
     this._targets = [];
     this._shipsSunk = 0;
     this._gameStart = true;
     this.showMessage.notify("Sink all ships, God Luck!");
     this.gameStart.notify();
+    this.handleTimer.notify(0);
+    clearInterval(this._intervalId);
 
     for (let i = 0; i < this._numShips; i++) {
 			let ship = this._ships[i];
       ship.hits = [];
     }
+
+    this._intervalId	=	setInterval(()	=>	{
+        this._timer++;
+        this.handleTimer.notify(this._timer);
+        if(!this._gameStart) {
+          clearInterval(this._intervalId);
+        }
+        console.log(this._timer);
+    },1000);
+
+
   }
 
   addTarget(target) {

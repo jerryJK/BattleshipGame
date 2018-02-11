@@ -14,6 +14,10 @@ export default class View  {
         _this.cellClicked.notify(event.target.id);
     });
 
+    this._model.handleTimer.attach((context, time) => {
+        this._elements.timer.text(time);
+    });
+
     this._model.showMessage.attach(function (context, msg) {
         _this.displayMessage(msg);
     });

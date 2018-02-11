@@ -9,7 +9,8 @@ $(() => {
   let view = new View(model, {
           'gameBoard': $('#game-board'),
           'messageWrapper': $('.message-wrapper'),
-          'startButton': $('.btn-start')
+          'startButton': $('.btn-start'),
+          'timer': $('.timer')
   });
   let controller = new Controller(model,view);
 
