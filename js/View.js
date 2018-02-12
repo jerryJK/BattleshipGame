@@ -18,6 +18,10 @@ export default class View  {
         this._elements.timer.text(time);
     });
 
+    this._model.handleShipsLeft.attach((context, numb) => {
+        this._elements.numbShips.text(numb);
+    });
+
     this._model.showMessage.attach(function (context, msg) {
         _this.displayMessage(msg);
     });

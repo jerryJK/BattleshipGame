@@ -15,7 +15,19 @@
     </header>
 
     <section id="game-board">
-        <div class="timer-wrapper text-center pt-3">Time: <span class="timer">0</span> s</div>
+        <div class="timer-wrapper text-center pt-2">Time: <span class="timer">0</span> s</div>
+        <div class="timer-wrapper py-1 d-flex align-items-center justify-content-center">
+          <div class="d-flex align-items-center">
+          Ships to sunk: <span class="numbShips px-1">5</span>x
+          <table class="ship d-inline-block pl-2">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
         <div class="message-wrapper text-center"></div>
         <table class="game-table mx-auto">
             <tr>
@@ -162,7 +174,7 @@
                 <td id="99" data-target="J9"></td>
             </tr>
         </table>
-        <button class="btn-start btn btn-success d-block mx-auto my-2">START NEW GAME</button>
+        <button class="btn-start btn btn-success d-block mx-auto my-2">START GAME</button>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>

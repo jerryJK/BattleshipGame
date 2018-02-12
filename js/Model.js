@@ -11,11 +11,11 @@ export default class Model  {
     	this._shipLength = 3;
     	this._shipsSunk = 0;
       this._ships = [
-    		{ locations: ["00", "01", "02"], hits: ["", "", ""] },
-    		{ locations: ["24", "34", "44"], hits: ["", "", ""] },
-        { locations: ["77", "78", "79"], hits: ["", "", ""] },
-        { locations: ["75", "85", "95"], hits: ["", "", ""] },
-    		{ locations: ["91", "92", "93"], hits: ["", "", ""] }
+          { locations: [0, 0, 0], hits: ["", "", ""] },
+          { locations: [0, 0, 0], hits: ["", "", ""] },
+          { locations: [0, 0, 0], hits: ["", "", ""] },
+          { locations: [0, 0, 0], hits: ["", "", ""] },
+          { locations: [0, 0, 0], hits: ["", "", ""] }
     	];
 
       this.targetAdded = new Event(this);
@@ -24,6 +24,7 @@ export default class Model  {
       this.showMiss = new Event(this);
       this.gameStart = new Event(this);
       this.handleTimer = new Event(this);
+      this.handleShipsLeft = new Event(this);
 
   }
 
@@ -45,6 +46,9 @@ export default class Model  {
 				if (this.isSunk(ship)) {
 					this.showMessage.notify("SHIP SUNK!");
 					this._shipsSunk++;
+
+          let numbShipsLeft = this._numShips - this._shipsSunk;
+          this.handleShipsLeft.notify(numbShipsLeft);
 				}
         if (this._shipsSunk === this._numShips) {
           this.showMessage.notify("Congratulations, you have sunk all the ships!");
@@ -60,7 +64,6 @@ export default class Model  {
 		return false;
 	}
 
-
   isSunk(ship) {
     for (let i = 0; i < this._shipLength; i++)  {
       if (ship.hits[i] !== "hit") {
@@ -75,10 +78,11 @@ export default class Model  {
     this._targets = [];
     this._shipsSunk = 0;
     this._gameStart = true;
-    this.showMessage.notify("Sink all ships, God Luck!");
+    this.showMessage.notify("Sink all ships, Good Luck!");
     this.gameStart.notify();
     this.handleTimer.notify(0);
     clearInterval(this._intervalId);
+    this.generateShipLocations();
 
     for (let i = 0; i < this._numShips; i++) {
 			let ship = this._ships[i];
@@ -94,7 +98,52 @@ export default class Model  {
         console.log(this._timer);
     },1000);
 
+  }
 
+  generateShipLocations() {
+    let locations;
+    for (let i = 0; i < this._numShips; i++) {
+      do {
+        locations = this.generateShip();
+      } while (this.collision(locations));
+      this._ships[i].locations = locations;
+    }
+    console.log(this._ships);
+  }
+
+  generateShip() {
+    let direction = Math.floor(Math.random() * 2);
+    let row, col;
+
+    if (direction === 1) { // horizontal
+      row = Math.floor(Math.random() * this._boardSize);
+      col = Math.floor(Math.random() * (this._boardSize - this._shipLength));
+    } else { // vertical
+      row = Math.floor(Math.random() * (this._boardSize - this._shipLength));
+      col = Math.floor(Math.random() * this._boardSize);
+    }
+
+    let newShipLocations = [];
+    for (let i = 0; i < this._shipLength; i++) {
+      if (direction === 1) {
+        newShipLocations.push(row + "" + (col + i));
+      } else {
+        newShipLocations.push((row + i) + "" + col);
+      }
+    }
+    return newShipLocations;
+  }
+
+  collision(locations) {
+    for (let i = 0; i < this._numShips; i++) {
+      let ship = this._ships[i];
+      for (let j = 0; j < locations.length; j++) {
+        if (ship.locations.indexOf(locations[j]) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   addTarget(target) {

@@ -60,3 +60,12 @@ table {
 .hit {
   background: url('/../images/hit.png') no-repeat center;
 }
+
+.ship tr td {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  background: url('/../images/hit.png') no-repeat center;
+  background-size: contain;
+  cursor: default;
+}

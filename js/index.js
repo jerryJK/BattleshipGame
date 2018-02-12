@@ -10,7 +10,9 @@ $(() => {
           'gameBoard': $('#game-board'),
           'messageWrapper': $('.message-wrapper'),
           'startButton': $('.btn-start'),
-          'timer': $('.timer')
+          'timer': $('.timer'),
+          'numbShips': $('.numbShips')
+
   });
   let controller = new Controller(model,view);
 
