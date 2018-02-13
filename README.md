@@ -5,4 +5,5 @@ JavaScript Battleship game - MVC way
 HTML/CSS/SASS/JavaScript-ES6/jQuery/Bootstrap </br>
 
 
-under construction
+### working Demo
+www.battleship.5v.pl
